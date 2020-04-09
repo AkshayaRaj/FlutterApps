@@ -1,3 +1,3 @@
 Basic calculator app.
 
-![](screens/calculatorApp.png)
+![](calculatorApp.png)
