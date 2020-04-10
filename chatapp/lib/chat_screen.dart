@@ -60,8 +60,22 @@ class ChatScreenState extends State<ChatScreen> {
             child: new ListView.builder(
               padding: EdgeInsets.all(8.0),
               reverse: true,
-              itemBuilder: (BuildContext context, int index){
-                return _messages[index];
+              itemBuilder: (context, index){
+                final item = _messages[index];
+                return Dismissible(
+                  key: UniqueKey(),
+                  onDismissed: (direction){
+                    //debugPrint(index.toString());
+                    setState(() {
+                      _messages.removeAt(index);
+                    });
+                    for(var msg in _messages){
+                      debugPrint(msg.text);
+                    }
+                  },
+                  child: item,
+                );
+                //return _messages[index];
               },
               itemCount: _messages.length,
             )
